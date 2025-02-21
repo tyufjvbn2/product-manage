@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lowest Price</title>
+    <style>
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+<h1>최저가 상품 구성 브랜드 보기</h1>
+<button onclick="window.location.href='/'">홈으로 가기</button>
+<table>
+    <thead>
+    <tr>
+        <th>카테고리</th>
+        <th>가격</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="product : ${products}">
+        <td th:text="${product.category_name}"></td>
+        <td th:text="|${#numbers.formatInteger(product.price, 0, 'COMMA')}|"></td>
+    </tr>
+    <!-- Total Price Row -->
+    <tr>
+        <td colspan="2"><b>총액</b></td>
+        <td th:text="|${#numbers.formatInteger(total_price, 0, 'COMMA')}|"></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

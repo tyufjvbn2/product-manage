@@ -10,10 +10,10 @@ import org.tyufjvbn2.productmanage.services.ProductService
 @RequestMapping("/category")
 class CategoryController (private val productService: ProductService) {
     @GetMapping("/lowest-price")
-    fun getLowestProductOfEachCategory(model: Model): String {
-        val product_summary = productService.getLowestProduct()
-        model.addAttribute("products", product_summary.products)
-        model.addAttribute("total_price", product_summary.totalPrice)
+    fun getLowestPriceProductOfEachCategory(model: Model): String {
+        val productSummary = productService.getLowestPriceProductOfEachCategory()
+        model.addAttribute("products", productSummary.products)
+        model.addAttribute("total_price", productSummary.totalPrice)
 
         return "category/lowest-price"
     }

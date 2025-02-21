@@ -6,7 +6,7 @@ import org.tyufjvbn2.productmanage.repositories.BrandRepository
 
 @Service
 class BrandService(val brandRepository: BrandRepository) {
-    fun getAllBrands(): List<Brand> {
-        return brandRepository.findAll()
-    }
+//    fun getAllBrands(): List<Brand> {
+//        return brandRepository.findAll()
+//    }
 }

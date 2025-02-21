@@ -3,6 +3,7 @@ package org.tyufjvbn2.productmanage.services
 import org.springframework.stereotype.Service
 import org.tyufjvbn2.productmanage.dtos.EnrichProductDto
 import org.tyufjvbn2.productmanage.dtos.ProductListSummaryDto
+import org.tyufjvbn2.productmanage.dtos.ProductListSummaryWithBrandDto
 import org.tyufjvbn2.productmanage.repositories.CategoryRepository
 import org.tyufjvbn2.productmanage.repositories.ProductRepository
 
@@ -12,7 +13,7 @@ class ProductService(
     val categoryRepository: CategoryRepository
     ) {
     // 카테고리별 최저가 상품
-    fun getLowestProduct (): ProductListSummaryDto {
+    fun getLowestPriceProductOfEachCategory (): ProductListSummaryDto {
         val products = productRepository.findLowestPriceProductByCategory()
         val categories = categoryRepository.findAll()
 
@@ -32,4 +33,10 @@ class ProductService(
         return ProductListSummaryDto(processedProducts, totalPrice)
 
     }
+
+    // 미완성입니다....
+//    fun getLowestProductOfBrand(brandId: Int): ProductListSummaryWithBrandDto {
+////        val products = productRepository.
+//
+//    }
 }
