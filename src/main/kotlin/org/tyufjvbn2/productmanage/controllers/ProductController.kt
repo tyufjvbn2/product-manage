@@ -11,7 +11,7 @@ class ProductController(private val productService: ProductService) {
     fun getLowestProductOfEachCategory(model: Model): String {
         val product_summary = productService.getLowestProduct()
         model.addAttribute("products", product_summary.products)
-        model.addAttribute("total_price", product_summary.total_price)
+        model.addAttribute("total_price", product_summary.totalPrice)
 
         return "lowest-product"
     }
