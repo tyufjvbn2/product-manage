@@ -8,7 +8,15 @@ data class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     var id: Int,
-    var brand_id: Int,
-    var category_id: Int,
+
+    @ManyToOne
+    @JoinColumn(name="brand_id", nullable=false)
+    var brand: Brand,
+
+    @ManyToOne
+    @JoinColumn(name="category_id", nullable=false)
+    var category: Category,
+
+    @Column(nullable = false)
     var price: Int
 )
