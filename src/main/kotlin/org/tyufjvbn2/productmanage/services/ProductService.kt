@@ -12,12 +12,12 @@ class ProductService(
     val productRepository: ProductRepository,
     val categoryRepository: CategoryRepository
     ) {
+    // 카테고리별 최저가 상품
     fun getLowestProduct (): ProductListSummaryDto {
         val products = productRepository.findLowestPriceProductByCategory()
-        val totalPrice = products.sumOf { it.price }
-
         val categories = categoryRepository.findAll()
 
+        // 카테고리에 빠진 상품 value nullable 처리
         val processedProducts = categories.map { category ->
             val product = products.find { it.category_id == category.id }
             if(product == null) {
@@ -27,6 +27,8 @@ class ProductService(
                 product
             }
         }
+
+        val totalPrice = processedProducts.sumOf { it.price }
 
         return ProductListSummaryDto(processedProducts, totalPrice)
 
