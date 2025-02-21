@@ -5,16 +5,19 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RequestMapping
 import org.tyufjvbn2.productmanage.repositories.BrandRepository
+import org.tyufjvbn2.productmanage.services.BrandService
 
 @Controller
 @RequestMapping("/brand")
 class BrandController(
-    private val brandRepository: BrandRepository
+    private val brandService: BrandService
 ) {
-    @GetMapping("")
-    fun getBrands(model: Model): String {
-        val brands = brandRepository.findAll()
+    @GetMapping("list")
+    fun renderBrandList(model: Model): String {
+        val brands = brandService.getAllBrands()
         model.addAttribute("brands", brands)
-        return "brands"
+        return "brand/list"
     }
+
+
 }
