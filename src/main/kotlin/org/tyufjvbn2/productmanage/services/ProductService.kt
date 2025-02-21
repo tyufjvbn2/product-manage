@@ -3,7 +3,6 @@ package org.tyufjvbn2.productmanage.services
 import org.springframework.stereotype.Service
 import org.tyufjvbn2.productmanage.dtos.EnrichProductDto
 import org.tyufjvbn2.productmanage.dtos.ProductListSummaryDto
-import org.tyufjvbn2.productmanage.models.Product
 import org.tyufjvbn2.productmanage.repositories.CategoryRepository
 import org.tyufjvbn2.productmanage.repositories.ProductRepository
 
